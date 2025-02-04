@@ -18,7 +18,7 @@ namespace Valgusfoor
 
             statusLabel = new Label
             {
-                Text = "Сначала включи светофор",
+                Text = "Kõigepealt lülitage valgusfoorid sisse",
                 FontSize = 24,
                 HorizontalOptions = LayoutOptions.Center
             };
@@ -41,12 +41,12 @@ namespace Valgusfoor
             var turnOffButton = new Button { Text = "Välja" };
             turnOffButton.Clicked += (s, e) => ToggleTrafficLight(false);
 
-            var autoCycleButton = new Button { Text = "Автоматический режим" };
+            var autoCycleButton = new Button { Text = "Automaatne režiim" };
             autoCycleButton.Clicked += (s, e) => StartTrafficLightCycle();
 
-            redLight.GestureRecognizers.Add(CreateTapGestureRecognizer("Красный"));
-            yellowLight.GestureRecognizers.Add(CreateTapGestureRecognizer("Жёлтый"));
-            greenLight.GestureRecognizers.Add(CreateTapGestureRecognizer("Зелёный"));
+            redLight.GestureRecognizers.Add(CreateTapGestureRecognizer("Punane"));
+            yellowLight.GestureRecognizers.Add(CreateTapGestureRecognizer("Kollane"));
+            greenLight.GestureRecognizers.Add(CreateTapGestureRecognizer("Roheline"));
 
             Content = new StackLayout
             {
@@ -85,7 +85,7 @@ namespace Valgusfoor
             yellowLight.Color = turnOn ? Colors.Yellow : Colors.Gray;
             greenLight.Color = turnOn ? Colors.Green : Colors.Gray;
 
-            statusLabel.Text = turnOn ? "Выберите цвет" : "Сначала включи светофор";
+            statusLabel.Text = turnOn ? "Vali värv" : "Kõigepealt lülitage valgusfoorid sisse";
             if (!turnOn)
             {
                 StartBlinkingYellow();
@@ -111,17 +111,17 @@ namespace Valgusfoor
                 redLight.Color = Colors.Red;
                 yellowLight.Color = Colors.Gray;
                 greenLight.Color = Colors.Gray;
-                statusLabel.Text = "Стой!";
+                statusLabel.Text = "Stopp!";
                 await Task.Delay(3000);
 
                 redLight.Color = Colors.Gray;
                 yellowLight.Color = Colors.Yellow;
-                statusLabel.Text = "Приготовься!";
+                statusLabel.Text = "Ole valmis!";
                 await Task.Delay(2000);
 
                 yellowLight.Color = Colors.Gray;
                 greenLight.Color = Colors.Green;
-                statusLabel.Text = "Иди!";
+                statusLabel.Text = "Mine!";
                 await Task.Delay(3000);
             }
         }
@@ -132,15 +132,15 @@ namespace Valgusfoor
             {
                 statusLabel.Text = colorName switch
                 {
-                    "Красный" => "Стой!",
-                    "Жёлтый" => "Приготовься!",
-                    "Зелёный" => "Иди!",
+                    "Punane" => "Stopp!",
+                    "Kollane" => "Ole valmis!",
+                    "Roheline" => "Mine!",
                     _ => statusLabel.Text
                 };
             }
             else
             {
-                statusLabel.Text = "Сначала включи светофор";
+                statusLabel.Text = "Kõigepealt lülitage valgusfoorid sisse";
             }
         }
     }
