@@ -24,6 +24,7 @@
                 SemanticProperties.HeadingLevel="Level2"
                 SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
 
+            <<!--test test ldasdswqeqwe545642sa-->
             <Button
                 x:Name="CounterBtn"
                 Text="Click me" 
